@@ -1,8 +1,11 @@
+import Searchbar from "@/components/Searchbar";
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
+import { useRouter } from "expo-router";
 import { Image, ScrollView, Text, View } from "react-native";
  
 export default function App() {
+    const router = useRouter();
   return (
     <View className="flex-1 bg-Primary">
       <Image
@@ -14,12 +17,12 @@ export default function App() {
           source={icons.logo}
           className="w-12 h-10 mt-20 mb-5 mx-auto"
         />
-        <Text className="text-white text-3xl font-bold text-center">
-          Welcome to MovieApp
-        </Text>
-        <Text className="text-white text-base text-center mt-2">
-          Discover and explore a world of movies at your fingertips.
-        </Text>
+        <View className="flex-1 mt-5">
+            <Searchbar
+                onPress={() => router.push("/search")}
+                placeholder="Search movies or TV series"
+            />
+        </View>
       </ScrollView>
     </View>
   );
